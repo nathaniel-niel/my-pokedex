@@ -7,17 +7,18 @@
 
 import Foundation
 
-var apiKey: String {
-  get {
-    // 1
-    guard let filePath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
-      fatalError("Couldn't find file 'Info.plist'.")
+var baseURL: String {
+    get {
+        // get Info.plist file path
+        guard let filePath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
+            fatalError("Couldn't find file 'Info.plist'.")
+        }
+        
+        // get BASE_URL from file Info.plist
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let value = plist?.object(forKey: "BASE_URL") as? String else {
+            fatalError("Couldn't find key 'API_KEY' in 'nfo.plist'.")
+        }
+        return value
     }
-    // 2
-    let plist = NSDictionary(contentsOfFile: filePath)
-    guard let value = plist?.object(forKey: "API_KEY") as? String else {
-      fatalError("Couldn't find key 'API_KEY' in 'nfo.plist'.")
-    }
-    return value
-  }
 }
