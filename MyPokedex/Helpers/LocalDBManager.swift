@@ -14,6 +14,11 @@ class LocalDBManager {
     let realm = try! Realm()
     
     func write(_ data: FavoritePokemonModel) {
+        let allPokemonData = realm.objects(Favorite.self)
+        
+        if allPokemonData.contains(where: {$0.pokemonId == data.pokemonId}) {
+            return
+        }
         let pokemonData = Favorite(
             pokemonId: data.pokemonId,
             name: data.name,
