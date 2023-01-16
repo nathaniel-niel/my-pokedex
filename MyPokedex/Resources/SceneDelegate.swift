@@ -15,16 +15,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = ViewController()
-        let navigationController = UINavigationController(rootViewController: vc)
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .systemIndigo
-        navigationController.navigationBar.standardAppearance = appearance
-        navigationController.navigationBar.scrollEdgeAppearance = appearance
-        navigationController.navigationBar.compactAppearance = appearance
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.isTranslucent  = true
-        self.window?.rootViewController = navigationController
+        let vc = MainTabBarController()
+//        let navigationController = UINavigationController(rootViewController: vc)
+//        let appearance = UINavigationBarAppearance()
+//        appearance.backgroundColor = .systemIndigo
+//        navigationController.navigationBar.standardAppearance = appearance
+//        navigationController.navigationBar.scrollEdgeAppearance = appearance
+//        navigationController.navigationBar.compactAppearance = appearance
+//        navigationController.navigationBar.prefersLargeTitles = true
+//        navigationController.navigationBar.isTranslucent  = true
+        self.window?.rootViewController = vc
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
     }
